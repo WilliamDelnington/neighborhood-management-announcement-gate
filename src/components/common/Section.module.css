@@ -1,0 +1,8 @@
+.section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section:last-child {
+  border-bottom: none;
+}

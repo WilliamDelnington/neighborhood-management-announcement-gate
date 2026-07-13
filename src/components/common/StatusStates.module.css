@@ -1,0 +1,29 @@
+.state {
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px dashed var(--line);
+  color: var(--ink-soft);
+  font-size: 14px;
+  text-align: center;
+}
+
+.error {
+  border-color: var(--stamp);
+  color: var(--stamp-deep);
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid var(--line);
+  border-top-color: var(--stamp);
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

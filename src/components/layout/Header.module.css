@@ -1,0 +1,116 @@
+.facade {
+  position: relative;
+  background: var(--wall-upper);
+}
+
+.molding {
+  height: 4px;
+  background: var(--trim);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.brandMark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.seal {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--stamp);
+  color: var(--trim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.15;
+  border: 2px solid var(--trim);
+  transform: rotate(-6deg);
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--wall-lower);
+  font-weight: 600;
+}
+
+.brandText h1 {
+  font-size: 19px;
+  color: var(--ink);
+}
+
+.navlinks {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.navlinks a {
+  text-decoration: none;
+  color: var(--ink);
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.navlinks a:hover {
+  border-color: var(--stamp);
+}
+
+.navtoggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .navlinks {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--wall-lower);
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 14px;
+    display: none;
+  }
+
+  .navlinks.open {
+    display: flex;
+  }
+
+  .navlinks a {
+    color: var(--trim);
+  }
+
+  .navtoggle {
+    display: block;
+  }
+}

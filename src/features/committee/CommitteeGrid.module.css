@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.role {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--stamp);
+  font-weight: 700;
+}
+
+.name {
+  font-family: "Fraunces", serif;
+  font-size: 17px;
+  margin: 5px 0 2px;
+}
+
+.phone {
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-decoration: none;
+}

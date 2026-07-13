@@ -1,0 +1,23 @@
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+.khan {
+  background: #f6dedb;
+  color: var(--stamp-deep);
+}
+
+.thuong {
+  background: #e4eadf;
+  color: var(--wall-lower-deep);
+}
+
+.sukien {
+  background: #f4e7c9;
+  color: var(--gold);
+}

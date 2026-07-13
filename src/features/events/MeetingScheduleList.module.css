@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.table td {
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+}
+
+.table td:first-child {
+  color: var(--ink-soft);
+  width: 40%;
+}
+
+.table td:last-child {
+  font-weight: 500;
+  text-align: right;
+}

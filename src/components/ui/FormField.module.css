@@ -1,0 +1,33 @@
+.field {
+  display: block;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.error {
+  color: var(--stamp-deep);
+  font-size: 12.5px;
+  margin-top: 4px;
+}

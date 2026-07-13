@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.submitMsg {
+  font-size: 13.5px;
+  color: var(--wall-lower-deep);
+  font-weight: 500;
+}
+
+.errorMsg {
+  font-size: 13.5px;
+  color: var(--stamp-deep);
+  font-weight: 500;
+}
+
+.authPrompt {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.authPrompt a {
+  color: var(--stamp);
+  font-weight: 600;
+  text-decoration: none;
+}

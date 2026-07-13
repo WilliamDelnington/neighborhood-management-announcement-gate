@@ -1,0 +1,28 @@
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stamp);
+  font-weight: 700;
+}
+
+.title {
+  font-size: 26px;
+  margin-top: 4px;
+}
+
+.desc {
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin-top: 6px;
+  font-size: 14.5px;
+}
