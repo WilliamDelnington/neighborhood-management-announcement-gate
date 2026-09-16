@@ -13,13 +13,13 @@ export function Header() {
         <nav className={styles.topnav}>
           <Link to="/" className={styles.brandMark} onClick={() => setOpen(false)}>
             <div className={styles.seal}>
-              TDP
+              PHƯỜNG
               <br />
-              HÒA BÌNH
+              DƯƠNG NỘI
             </div>
             <div className={styles.brandText}>
-              <div className={styles.eyebrow}>Phường Dương Nội</div>
-              <h1>Tổ dân phố Hòa Bình</h1>
+              <div className={styles.eyebrow}>Thành phố Hà Nội</div>
+              <h1>Phường Dương Nội</h1>
             </div>
           </Link>
           <ul className={cn(styles.navlinks, open && styles.open)}>

@@ -2,7 +2,7 @@
   "name": "to-dan-pho-hoa-binh-info-gate",
   "private": true,
   "version": "1.0.0",
-  "description": "Cổng thông tin cư dân Tổ dân phố Hòa Bình",
+  "description": "Cổng thông tin của phường Dương Nội",
   "type": "module",
   "scripts": {
     "dev": "vite",

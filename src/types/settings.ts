@@ -9,15 +9,7 @@ export type EmergencyContact = {
   phone: string;
 };
 
-export type CommunityStats = {
-  totalHouseholds: number;
-  totalResidents: number;
-  leaderName: string;
-  termLabel: string;
-};
-
 export type PublicSettings = {
   app_identity?: AppIdentity;
   emergency_contacts?: EmergencyContact[];
-  community_stats?: CommunityStats;
 };

@@ -12,9 +12,11 @@ export function Footer() {
         <div className={styles.addr}>
           {identity
             ? `${identity.name}, ${identity.ward}, ${identity.city}.`
-            : "Tổ dân phố Hòa Bình, phường Dương Nội."}
+            : "Phường Dương Nội, Thành phố Hà Nội."}
         </div>
-        <div className={styles.seal}>© {year} TDP Hòa Bình · tdphb-duongnoi.io.vn</div>
+        <div className={styles.seal}>
+          © {year} Phường Dương Nội · congthongtin.phuongduongnoi.quanlytodanpho.com
+        </div>
       </div>
     </footer>
   );
