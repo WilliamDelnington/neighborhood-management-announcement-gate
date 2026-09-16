@@ -1,19 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
 
 :root {
-  --wall-upper: #e7b95c;
-  --wall-upper-deep: #d9a741;
-  --wall-lower: #3f5f44;
-  --wall-lower-deep: #33502f;
-  --trim: #f6f1e3;
-  --ink: #2e2a20;
-  --ink-soft: #5b5646;
-  --paper: #fbf8f0;
-  --paper-dim: #f1ecdc;
-  --stamp: #a2352a;
-  --stamp-deep: #7c281f;
-  --gold: #b4872f;
-  --line: rgba(46, 42, 32, 0.14);
+  --wall-upper: #1e4d8b;
+  --wall-upper-deep: #163a69;
+  --wall-lower: #0f2a4d;
+  --wall-lower-deep: #0a1f3b;
+  --trim: #ffffff;
+  --ink: #1c2733;
+  --ink-soft: #51606e;
+  --paper: #f4f7fb;
+  --paper-dim: #e7edf5;
+  --stamp: #da251d;
+  --stamp-deep: #a81810;
+  --gold: #d99a00;
+  --line: rgba(15, 42, 77, 0.14);
   --radius: 10px;
 }
 

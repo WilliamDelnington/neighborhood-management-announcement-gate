@@ -8,16 +8,16 @@
 }
 
 .khan {
-  background: #f6dedb;
+  background: #fbe0de;
   color: var(--stamp-deep);
 }
 
 .thuong {
-  background: #e4eadf;
+  background: #e1e9f5;
   color: var(--wall-lower-deep);
 }
 
 .sukien {
-  background: #f4e7c9;
+  background: #fbedcc;
   color: var(--gold);
 }

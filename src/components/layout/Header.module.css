@@ -40,20 +40,20 @@
   text-align: center;
   line-height: 1.15;
   border: 2px solid var(--trim);
-  transform: rotate(-6deg);
   flex-shrink: 0;
 }
 
 .eyebrow {
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: var(--wall-lower);
+  color: var(--trim);
+  opacity: 0.85;
   font-weight: 600;
 }
 
 .brandText h1 {
   font-size: 19px;
-  color: var(--ink);
+  color: var(--trim);
 }
 
 .navlinks {
@@ -68,24 +68,24 @@
 
 .navlinks a {
   text-decoration: none;
-  color: var(--ink);
+  color: var(--trim);
   padding: 6px 2px;
   border-bottom: 2px solid transparent;
 }
 
 .navlinks a:hover {
-  border-color: var(--stamp);
+  border-color: var(--gold);
 }
 
 .navtoggle {
   display: none;
   background: none;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--trim);
   border-radius: 6px;
   padding: 6px 10px;
   font-size: 20px;
   line-height: 1;
-  color: var(--ink);
+  color: var(--trim);
   cursor: pointer;
 }
 
