@@ -13,7 +13,7 @@ export function LinksSection() {
       <SectionHeading
         tag="Dịch vụ số"
         title="Liên kết"
-        description="Các cổng thông tin và dịch vụ số khác của Tổ dân phố và phường Dương Nội."
+        description="Các cổng thông tin và dịch vụ số khác của phường Dương Nội."
       />
       {isLoading && <LoadingSpinner />}
       {isError && <ErrorState message="Không thể tải danh sách liên kết. Vui lòng thử lại sau." />}

@@ -7,5 +7,5 @@ export const navLinks: NavLink[] = [
   { href: "#thong-bao", label: "Thông báo" },
   { href: "#ban-do", label: "Bản đồ" },
   { href: "#lien-ket", label: "Liên kết" },
-  { href: "#phan-anh", label: "Phản ánh" },
+  { href: "#khan-cap", label: "Khẩn cấp" },
 ];

@@ -13,7 +13,7 @@ export function AnnouncementList() {
       <SectionHeading
         tag="Bảng tin"
         title="Thông báo mới"
-        description="Các thông báo từ Chi bộ và Tổ dân phố, cập nhật thường xuyên tới toàn thể cư dân."
+        description="Các thông báo từ phường và các Tổ dân phố, cập nhật thường xuyên tới toàn thể cư dân."
       />
       {isLoading && <LoadingSpinner />}
       {isError && <ErrorState message="Không thể tải thông báo. Vui lòng thử lại sau." />}

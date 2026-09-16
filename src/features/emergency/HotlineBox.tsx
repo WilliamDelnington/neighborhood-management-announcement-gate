@@ -9,7 +9,6 @@ export function HotlineBox() {
 
   return (
     <div className={styles.box}>
-      <h3>Số điện thoại khẩn cấp</h3>
       {isLoading && <LoadingSpinner />}
       {isError && <ErrorState message="Không thể tải số điện thoại khẩn cấp." />}
       {!isLoading && !isError && contacts.length === 0 && (

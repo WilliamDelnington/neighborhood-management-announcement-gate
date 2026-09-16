@@ -1,4 +1,3 @@
-import { useAuthStore } from "@/store/authStore";
 import type { ApiResponse } from "@/types/api";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -16,7 +15,6 @@ type RequestOptions = {
   method?: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
   body?: unknown;
   query?: Record<string, string | number | boolean | undefined>;
-  auth?: boolean;
 };
 
 function buildQueryString(
@@ -35,14 +33,10 @@ export async function apiRequest<T>(
   path: string,
   options: RequestOptions = {},
 ): Promise<T> {
-  const { method = "GET", body, query, auth = false } = options;
+  const { method = "GET", body, query } = options;
 
   const headers: Record<string, string> = {};
   if (body !== undefined) headers["Content-Type"] = "application/json";
-  if (auth) {
-    const token = useAuthStore.getState().token;
-    if (token) headers["Authorization"] = `Bearer ${token}`;
-  }
 
   const response = await fetch(`${BASE_URL}${path}${buildQueryString(query)}`, {
     method,

@@ -2,7 +2,7 @@ import { HeroSection } from "@/features/home/HeroSection";
 import { AnnouncementList } from "@/features/announcements/AnnouncementList";
 import { WardMapSection } from "@/features/map/WardMapSection";
 import { LinksSection } from "@/features/links/LinksSection";
-import { FeedbackSection } from "@/features/feedback/FeedbackSection";
+import { HotlineSection } from "@/features/emergency/HotlineSection";
 
 export function HomePage() {
   return (
@@ -11,7 +11,7 @@ export function HomePage() {
       <AnnouncementList />
       <WardMapSection />
       <LinksSection />
-      <FeedbackSection />
+      <HotlineSection />
     </>
   );
 }
