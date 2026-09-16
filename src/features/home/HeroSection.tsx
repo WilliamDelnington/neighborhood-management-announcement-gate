@@ -12,8 +12,8 @@ export function HeroSection() {
         <div className={styles.eyebrow}>Cổng thông tin cư dân</div>
         <h2 className={styles.title}>Bảng tin của Tổ dân phố Hòa Bình</h2>
         <p className={styles.lead}>
-          Nơi cư dân theo dõi thông báo, lịch sinh hoạt Chi bộ và Tổ dân phố,
-          tra cứu thủ tục hành chính và gửi phản ánh tới Ban công tác.
+          Nơi cư dân theo dõi thông báo, tra cứu bản đồ phường, các liên kết
+          dịch vụ số và gửi phản ánh.
         </p>
         <div className={styles.statRow}>
           <StatChip

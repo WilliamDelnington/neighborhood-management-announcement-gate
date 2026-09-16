@@ -1,8 +1,7 @@
 import { HeroSection } from "@/features/home/HeroSection";
 import { AnnouncementList } from "@/features/announcements/AnnouncementList";
-import { MeetingScheduleList } from "@/features/events/MeetingScheduleList";
-import { ProcedureList } from "@/features/procedures/ProcedureList";
-import { CommitteeGrid } from "@/features/committee/CommitteeGrid";
+import { WardMapSection } from "@/features/map/WardMapSection";
+import { LinksSection } from "@/features/links/LinksSection";
 import { FeedbackSection } from "@/features/feedback/FeedbackSection";
 
 export function HomePage() {
@@ -10,9 +9,8 @@ export function HomePage() {
     <>
       <HeroSection />
       <AnnouncementList />
-      <MeetingScheduleList />
-      <ProcedureList />
-      <CommitteeGrid />
+      <WardMapSection />
+      <LinksSection />
       <FeedbackSection />
     </>
   );

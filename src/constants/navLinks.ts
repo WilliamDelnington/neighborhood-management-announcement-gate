@@ -5,8 +5,7 @@ export type NavLink = {
 
 export const navLinks: NavLink[] = [
   { href: "#thong-bao", label: "Thông báo" },
-  { href: "#lich-sinh-hoat", label: "Lịch sinh hoạt" },
-  { href: "#thu-tuc", label: "Thủ tục" },
-  { href: "#ban-cong-tac", label: "Ban công tác" },
+  { href: "#ban-do", label: "Bản đồ" },
+  { href: "#lien-ket", label: "Liên kết" },
   { href: "#phan-anh", label: "Phản ánh" },
 ];
