@@ -1,28 +1,66 @@
 .hero {
-  background: var(--wall-lower);
-  padding: 56px 0 90px;
-  color: var(--trim);
+  position: relative;
+  background-color: var(--hero);
+  background-size: cover;
+  background-position: center;
 }
 
-.eyebrow {
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--trim);
-  opacity: 0.85;
-  font-weight: 600;
+/* Lop phu toi giup chu trang doc duoc tren moi anh banner. */
+.withImage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10, 30, 60, 0.78) 0%, rgba(10, 30, 60, 0.45) 60%, rgba(10, 30, 60, 0.25) 100%);
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 56px;
+  padding-bottom: 96px;
 }
 
 .title {
-  font-size: clamp(30px, 4.5vw, 46px);
-  color: var(--trim);
-  margin: 10px 0 14px;
+  font-size: 40px;
+  line-height: 1.2;
+  color: #fff;
   max-width: 22ch;
+  text-wrap: balance;
 }
 
 .lead {
-  max-width: 52ch;
-  color: var(--trim);
-  opacity: 0.92;
-  font-size: 16px;
+  font-size: 17px;
+  color: #e6eef8;
+  max-width: 56ch;
+}
+
+.leadShort {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .inner {
+    gap: 10px;
+    padding-top: 24px;
+    padding-bottom: 64px;
+  }
+
+  .title {
+    font-size: 26px;
+    line-height: 1.25;
+  }
+
+  .lead {
+    font-size: 15px;
+  }
+
+  .leadLong {
+    display: none;
+  }
+
+  .leadShort {
+    display: inline;
+  }
 }

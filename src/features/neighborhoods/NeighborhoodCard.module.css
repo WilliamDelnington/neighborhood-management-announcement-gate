@@ -1,0 +1,89 @@
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  min-width: 0;
+}
+
+.name {
+  font-size: 18px;
+}
+
+.facts {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--ink-mid);
+}
+
+.facts dt {
+  display: inline;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.facts dd {
+  display: inline;
+  margin: 0 0 0 4px;
+}
+
+.desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.contact {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 12px;
+}
+
+.contactText {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactLabel {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.phone {
+  font-size: 16px;
+}
+
+.noPhone {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.call:hover {
+  background: var(--primary-deep);
+  color: #fff;
+}

@@ -1,0 +1,66 @@
+/* Hang "Tin tuc | cot phai (Khao sat, Thong bao)". */
+.newsRow {
+  padding-top: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+  grid-template-areas: "news notices";
+  align-items: start;
+  column-gap: 32px;
+  row-gap: 24px;
+}
+
+.newsRow.withSurvey {
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "news survey"
+    "news notices";
+}
+
+.news {
+  grid-area: news;
+}
+
+.survey {
+  grid-area: survey;
+}
+
+.notices {
+  grid-area: notices;
+}
+
+.extras {
+  padding-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .newsRow,
+  .newsRow.withSurvey {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "survey"
+      "news"
+      "notices";
+  }
+
+  .newsRow:not(.withSurvey) {
+    grid-template-areas:
+      "news"
+      "notices";
+  }
+}
+
+@media (max-width: 760px) {
+  .newsRow,
+  .extras {
+    padding-top: 32px;
+  }
+
+  .newsRow {
+    row-gap: 20px;
+  }
+}

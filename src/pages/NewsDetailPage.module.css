@@ -1,0 +1,195 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 28px;
+  max-width: 880px;
+}
+
+.crumbs ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.crumbs li + li::before {
+  content: "/";
+  margin-right: 6px;
+}
+
+.crumbs li[aria-current] {
+  max-width: 40ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 1.3;
+}
+
+.cover {
+  display: block;
+  width: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--placeholder);
+}
+
+/* Noi dung HTML (da sanitize) tu trinh soan thao. */
+.content {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink);
+  min-width: 0;
+}
+
+.content > * + * {
+  margin-top: 0.9em;
+}
+
+.content p,
+.content ul,
+.content ol,
+.content blockquote,
+.content figure {
+  margin-bottom: 0;
+}
+
+.content h2 {
+  font-size: 22px;
+  margin-top: 1.4em;
+}
+
+.content h3 {
+  font-size: 18px;
+  margin-top: 1.2em;
+}
+
+.content img {
+  display: block;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+.content blockquote {
+  margin-left: 0;
+  padding-left: 16px;
+  border-left: 4px solid var(--line);
+  color: var(--ink-mid);
+}
+
+.content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.content th,
+.content td {
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+}
+
+.content pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.gallery {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  gap: 10px;
+}
+
+.gallery a {
+  display: block;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.missing {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 32px 24px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.missingTitle {
+  font-size: 22px;
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding-top: 16px;
+    gap: 16px;
+  }
+
+  .article {
+    padding: 18px 16px;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .content {
+    font-size: 15px;
+  }
+}

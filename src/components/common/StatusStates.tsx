@@ -13,5 +13,9 @@ export function EmptyState({ message }: { message: string }) {
 }
 
 export function ErrorState({ message }: { message: string }) {
-  return <div className={`${styles.state} ${styles.error}`}>{message}</div>;
+  return (
+    <div className={`${styles.state} ${styles.error}`} role="alert">
+      {message}
+    </div>
+  );
 }

@@ -1,11 +1,16 @@
 export type NavLink = {
-  href: string;
+  to: string;
   label: string;
+  // Lien ket toi mot route rieng (duoc danh dau trang hien tai) - cac lien ket
+  // con lai la neo (#...) toi mot muc tren trang.
+  route?: boolean;
 };
 
 export const navLinks: NavLink[] = [
-  { href: "#thong-bao", label: "Thông báo" },
-  { href: "#ban-do", label: "Bản đồ" },
-  { href: "#lien-ket", label: "Liên kết" },
-  { href: "#khan-cap", label: "Khẩn cấp" },
+  { to: "/", label: "Trang chủ", route: true },
+  { to: "/dich-vu", label: "Dịch vụ & lịch hẹn", route: true },
+  { to: "/to-dan-pho", label: "Tổ dân phố", route: true },
+  { to: "/#tin-tuc", label: "Tin tức" },
+  { to: "/#lich-hop", label: "Lịch họp" },
+  { to: "#lien-he", label: "Liên hệ" },
 ];

@@ -1,8 +1,10 @@
 .section {
-  padding: 56px 0;
-  border-bottom: 1px solid var(--line);
+  padding-top: 56px;
+  scroll-margin-top: 16px;
 }
 
-.section:last-child {
-  border-bottom: none;
+@media (max-width: 760px) {
+  .section {
+    padding-top: 32px;
+  }
 }

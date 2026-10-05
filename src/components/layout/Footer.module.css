@@ -1,27 +1,122 @@
 .footer {
-  background: var(--wall-lower);
-  color: var(--trim);
-  padding: 36px 0;
+  margin-top: 56px;
+  background: var(--primary-deep);
+  color: #e6eef8;
+  outline: none;
+}
+
+.footer a {
+  color: #fff;
+}
+
+.footer a:hover {
+  color: #dbe7f5;
 }
 
 .grid {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 28px;
+  padding-top: 40px;
+  padding-bottom: 28px;
 }
 
-.addr {
-  font-size: 13.5px;
-  opacity: 0.85;
-  max-width: 44ch;
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
 }
 
-.seal {
+.unit {
+  font-size: 17px;
+  color: #fff;
+}
+
+.colTitle {
+  font-size: 15px;
+  color: #fff;
+}
+
+.hotlines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hotline {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  min-height: 32px;
+}
+
+.hotlinePhone {
+  font-weight: 600;
+}
+
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 14px;
+  padding-bottom: 20px;
   font-size: 13px;
-  opacity: 0.85;
+  color: #c3d4ea;
+}
+
+@media (max-width: 760px) {
+  .footer {
+    margin-top: 36px;
+    font-size: 14px;
+  }
+
+  .grid {
+    gap: 18px;
+    padding-top: 28px;
+  }
+
+  .unit {
+    font-size: 16px;
+  }
+
+  .hotlines {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 8px;
+  }
+
+  .footer .hotline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 56px;
+    width: 100%;
+    padding: 6px;
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--danger);
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.15;
+  }
+
+  .footer .hotline:hover {
+    color: var(--danger);
+    background: var(--danger-tint);
+  }
+
+  .hotlinePhone {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .hotlineSep {
+    display: none;
+  }
+
+  .hotlineLabel {
+    font-size: 11px;
+    font-weight: 500;
+  }
 }

@@ -1,0 +1,60 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.crumbs ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.crumbs li + li::before {
+  content: "/";
+  margin-right: 6px;
+}
+
+.crumbs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.text {
+  min-width: 0;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.desc {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  max-width: 70ch;
+}
+
+@media (max-width: 760px) {
+  .wrap {
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

@@ -1,116 +1,286 @@
-.facade {
+.header {
   position: relative;
-  background: var(--wall-upper);
+  z-index: 20;
 }
 
-.molding {
+.accentBar {
   height: 4px;
-  background: var(--trim);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
+  background: var(--accent);
 }
 
-.topnav {
+.brandBar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.brandRow {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 0;
-  position: relative;
-  z-index: 2;
+  gap: 16px;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
-.brandMark {
+.brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  min-width: 0;
   text-decoration: none;
+  color: var(--ink);
 }
 
-.seal {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--stamp);
-  color: var(--trim);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Fraunces", serif;
-  font-weight: 700;
-  font-size: 11px;
-  text-align: center;
-  line-height: 1.15;
-  border: 2px solid var(--trim);
+.brand:hover {
+  color: var(--ink);
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
-.eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--trim);
-  opacity: 0.85;
-  font-weight: 600;
-}
-
-.brandText h1 {
-  font-size: 19px;
-  color: var(--trim);
-}
-
-.navlinks {
+.seal {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px var(--accent);
   display: flex;
-  gap: 22px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: 0.02em;
 }
 
-.navlinks a {
-  text-decoration: none;
-  color: var(--trim);
-  padding: 6px 2px;
-  border-bottom: 2px solid transparent;
+.brandText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
-.navlinks a:hover {
-  border-color: var(--gold);
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-transform: uppercase;
 }
 
-.navtoggle {
+.eyebrowShort {
   display: none;
-  background: none;
-  border: 1px solid var(--trim);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 20px;
-  line-height: 1;
-  color: var(--trim);
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.hotlines {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.hotlinesLabel {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.hotlineChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: var(--radius-sm);
+  background: var(--danger-tint);
+  color: var(--danger);
+  border: 1px solid var(--danger-line);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.hotlineChip:hover {
+  color: var(--danger);
+  background: #fbdde1;
+}
+
+.menuToggle {
+  display: none;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--field-line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--primary);
   cursor: pointer;
 }
 
+.nav {
+  background: var(--primary);
+}
+
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 28px;
+  list-style: none;
+  margin: 0 auto;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid transparent;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.navHotlines {
+  display: none;
+}
+
 @media (max-width: 760px) {
-  .navlinks {
+  .brandRow {
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px 8px 10px 16px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .logo,
+  .seal {
+    width: 42px;
+    height: 42px;
+  }
+
+  .seal {
+    font-size: 6.5px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  .eyebrowLong {
+    display: none;
+  }
+
+  .eyebrowShort {
+    display: inline;
+  }
+
+  .name {
+    font-size: 17px;
+  }
+
+  .sub,
+  .hotlines {
+    display: none;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--wall-lower);
-    flex-direction: column;
-    padding: 16px 24px;
-    gap: 14px;
-    display: none;
+    background: var(--surface);
+    box-shadow: 0 12px 24px rgba(13, 40, 80, 0.18);
+    border-bottom: 4px solid var(--primary);
   }
 
-  .navlinks.open {
-    display: flex;
-  }
-
-  .navlinks a {
-    color: var(--trim);
-  }
-
-  .navtoggle {
+  .nav.open {
     display: block;
+  }
+
+  .navList {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .navLink {
+    display: flex;
+    min-height: 52px;
+    padding: 0 20px;
+    border: none;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink);
+    font-size: 16px;
+  }
+
+  .navLink:hover,
+  .navLink.active {
+    color: var(--primary);
+    border-bottom-color: var(--line-soft);
+  }
+
+  .navLink.active {
+    box-shadow: inset 4px 0 0 var(--primary);
+    font-weight: 600;
+  }
+
+  .navHotlines {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 8px;
+    padding: 14px 16px;
+  }
+
+  .navHotline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border-radius: var(--radius-sm);
+    background: var(--danger-tint);
+    color: var(--danger);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .navHotline:hover {
+    color: var(--danger);
   }
 }

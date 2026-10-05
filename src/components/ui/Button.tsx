@@ -1,4 +1,5 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
+import { Link, type LinkProps } from "react-router-dom";
 import { cn } from "@/utils/cn";
 import styles from "./Button.module.css";
 
@@ -25,5 +26,20 @@ export function LinkButton({
 }: LinkButtonProps) {
   return (
     <a className={cn(styles.button, styles[variant], className)} {...props} />
+  );
+}
+
+type RouterLinkButtonProps = LinkProps & {
+  variant?: Variant;
+};
+
+// Nut dang lien ket noi bo (dieu huong qua react-router, khong tai lai trang).
+export function RouterLinkButton({
+  variant = "outline",
+  className,
+  ...props
+}: RouterLinkButtonProps) {
+  return (
+    <Link className={cn(styles.button, styles[variant], className)} {...props} />
   );
 }

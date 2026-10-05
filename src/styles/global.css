@@ -1,20 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
-
 :root {
-  --wall-upper: #1e4d8b;
-  --wall-upper-deep: #163a69;
-  --wall-lower: #0f2a4d;
-  --wall-lower-deep: #0a1f3b;
-  --trim: #ffffff;
-  --ink: #1c2733;
-  --ink-soft: #51606e;
-  --paper: #f4f7fb;
-  --paper-dim: #e7edf5;
-  --stamp: #da251d;
-  --stamp-deep: #a81810;
-  --gold: #d99a00;
-  --line: rgba(15, 42, 77, 0.14);
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --line: #dde3ea;
+  --line-soft: #edf1f5;
+  --field-line: #b9c5d2;
+  --ink: #17212b;
+  --ink-mid: #34414e;
+  --ink-soft: #4a5866;
+  --primary: #0d4b91;
+  --primary-deep: #0a3a70;
+  --primary-tint: #e7f0fa;
+  --hero: #1d5aa3;
+  --accent: #c8102e;
+  --danger: #a00d24;
+  --danger-tint: #fdecee;
+  --danger-line: #f4c2c9;
+  --notice: #8a4b00;
+  --notice-text: #6b3a00;
+  --notice-tint: #fffaf2;
+  --notice-line: #f3c98b;
+  --placeholder: #e3e9f0;
+  --shadow-raised: 0 6px 18px rgba(13, 40, 80, 0.1);
   --radius: 10px;
+  --radius-sm: 8px;
+  --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 * {
@@ -23,50 +32,97 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
-  font-family: "Be Vietnam Pro", sans-serif;
+  font-family: var(--font);
+  font-size: 15px;
   line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
 h1,
 h2,
 h3 {
-  font-family: "Fraunces", serif;
-  font-weight: 600;
+  font-family: var(--font);
+  font-weight: 700;
   color: var(--ink);
+  line-height: 1.3;
+  margin: 0;
+}
+
+p {
   margin: 0;
 }
 
 a {
-  color: inherit;
+  color: var(--primary);
 }
 
-.mono {
-  font-family: "IBM Plex Mono", monospace;
+a:hover {
+  color: var(--primary-deep);
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #2f7ad8;
+  outline-offset: 2px;
 }
 
 .wrap {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .skip-link {
   position: absolute;
   left: -999px;
   top: 0;
-  background: var(--stamp);
+  background: var(--primary);
   color: #fff;
-  padding: 8px 14px;
+  padding: 10px 16px;
   border-radius: 0 0 8px 0;
   z-index: 100;
 }
 
 .skip-link:focus {
   left: 0;
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  .wrap {
+    padding: 0 16px;
+  }
 }

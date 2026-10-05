@@ -1,41 +1,36 @@
-import { Section } from "@/components/common/Section";
-import { SectionHeading } from "@/components/common/SectionHeading";
 import { EmptyState, ErrorState, LoadingSpinner } from "@/components/common/StatusStates";
+import { cn } from "@/utils/cn";
+import { resolveAssetUrl } from "@/utils/resolveAssetUrl";
 import { useUtilityApps } from "./useUtilityApps";
 import styles from "./LinksSection.module.css";
 
-export function LinksSection() {
+export function LinksSection({ className }: { className?: string }) {
   const { data, isLoading, isError } = useUtilityApps();
-  const apps = data?.items ?? [];
+  const apps = (data?.items ?? []).filter(app => app.active !== false);
 
   return (
-    <Section id="lien-ket">
-      <SectionHeading
-        tag="Dịch vụ số"
-        title="Liên kết"
-        description="Các cổng thông tin và dịch vụ số khác của phường Dương Nội."
-      />
+    <section id="lien-ket" className={cn(styles.card, className)} aria-labelledby="lien-ket-title">
+      <h2 id="lien-ket-title" className={styles.title}>
+        Liên kết dịch vụ số
+      </h2>
       {isLoading && <LoadingSpinner />}
       {isError && <ErrorState message="Không thể tải danh sách liên kết. Vui lòng thử lại sau." />}
-      {!isLoading && !isError && apps.length === 0 && (
-        <EmptyState message="Chưa có liên kết nào được đăng tải." />
-      )}
+      {data && apps.length === 0 && <EmptyState message="Chưa có liên kết nào được đăng tải." />}
       {apps.length > 0 && (
-        <div className={styles.grid}>
-          {apps.map(app => (
-            <a
-              key={app._id}
-              className={styles.card}
-              href={app.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img className={styles.icon} src={app.icon} alt="" />
-              <span className={styles.name}>{app.name}</span>
-            </a>
-          ))}
-        </div>
+        <ul className={styles.grid}>
+          {apps.map(app => {
+            const icon = resolveAssetUrl(app.icon);
+            return (
+              <li key={app._id}>
+                <a className={styles.link} href={app.url} target="_blank" rel="noreferrer">
+                  {icon && <img className={styles.icon} src={icon} alt="" loading="lazy" />}
+                  <span className={styles.name}>{app.name}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       )}
-    </Section>
+    </section>
   );
 }
