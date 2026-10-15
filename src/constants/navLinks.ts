@@ -8,7 +8,7 @@ export type NavLink = {
 
 export const navLinks: NavLink[] = [
   { to: "/", label: "Trang chủ", route: true },
-  { to: "/dich-vu", label: "Dịch vụ & lịch hẹn", route: true },
+  { to: "/#ban-do", label: "Bản đồ phường" },
   { to: "/to-dan-pho", label: "Tổ dân phố", route: true },
   { to: "/#tin-tuc", label: "Tin tức" },
   { to: "/#lich-hop", label: "Lịch họp" },

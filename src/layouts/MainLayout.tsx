@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 // react-router khong tu cuon toi #neo khi dieu huong client-side (vd tu
-// /dich-vu bam "Tin tức" -> /#tin-tuc). Muc dich co the chua render ngay (dang
+// /to-dan-pho bam "Tin tức" -> /#tin-tuc). Muc dich co the chua render ngay (dang
 // tai du lieu) nen thu lai vai lan. Chi cuon len dau trang khi doi trang -
 // doi query string (vd ô tìm kiếm ?q=) khong cuon.
 function useScrollOnNavigate() {

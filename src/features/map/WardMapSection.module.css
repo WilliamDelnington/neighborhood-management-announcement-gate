@@ -13,6 +13,11 @@
   font-size: 18px;
 }
 
+.description {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
 .frame {
   display: block;
   border-radius: var(--radius-sm);
@@ -23,8 +28,8 @@
 .map {
   display: block;
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  height: 360px;
+  border: 0;
 }
 
 .more {

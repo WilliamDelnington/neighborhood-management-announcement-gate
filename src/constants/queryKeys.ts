@@ -8,8 +8,6 @@ export const queryKeys = {
   upcomingMeetings: (params: { limit: number }) =>
     ["meetings", "upcoming", params] as const,
   openSurveys: ["surveys", "open"] as const,
-  appointmentServices: (wardCode: string) =>
-    ["appointment-services", "public", wardCode] as const,
   neighborhoods: (params: { q: string; wardCode: string }) =>
     ["neighborhoods", "public", params] as const,
 };

@@ -19,12 +19,12 @@ type Action = {
 
 const ACTIONS: Action[] = [
   {
-    key: "dat-lich",
-    icon: "calendar",
-    label: "Đặt lịch hẹn",
-    shortLabel: "Đặt lịch hẹn",
-    description: "Chọn dịch vụ, xem giờ tiếp nhận và đặt lịch",
-    to: "/dich-vu",
+    key: "ban-do",
+    icon: "pin",
+    label: "Bản đồ phường",
+    shortLabel: "Bản đồ phường",
+    description: "Khám phá địa bàn phường trên bản đồ tương tác",
+    to: "/#ban-do",
   },
   {
     key: "to-dan-pho",

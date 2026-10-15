@@ -6,7 +6,6 @@ import { WardMapSection } from "@/features/map/WardMapSection";
 import { MeetingsSection } from "@/features/meetings/MeetingsSection";
 import { NeighborhoodsPreview } from "@/features/neighborhoods/NeighborhoodsPreview";
 import { NewsSection } from "@/features/news/NewsSection";
-import { ServicesPreview } from "@/features/services/ServicesPreview";
 import { OpenSurveyCard } from "@/features/surveys/OpenSurveyCard";
 import { useOpenSurvey } from "@/features/surveys/useOpenSurvey";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
@@ -23,7 +22,6 @@ export function HomePage() {
     <>
       <HeroSection />
       <QuickActions />
-      <ServicesPreview />
       <NeighborhoodsPreview />
 
       <div className={cn("wrap", styles.newsRow, openSurvey && styles.withSurvey)}>

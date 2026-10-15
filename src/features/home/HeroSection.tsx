@@ -15,11 +15,11 @@ export function HeroSection() {
         <h1 className={styles.title}>Thông tin và dịch vụ cho cư dân {wardInSentence}</h1>
         <p className={styles.lead}>
           <span className={styles.leadLong}>
-            Tra cứu thủ tục, đặt lịch làm việc với phường, tìm liên hệ Tổ dân phố và theo
+            Khám phá bản đồ phường, tìm liên hệ Tổ dân phố và theo
             dõi tin tức, lịch họp tại địa phương.
           </span>
           <span className={styles.leadShort}>
-            Thủ tục, lịch hẹn, liên hệ Tổ dân phố, tin tức và lịch họp.
+            Bản đồ phường, liên hệ Tổ dân phố, tin tức và lịch họp.
           </span>
         </p>
       </div>
