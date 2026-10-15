@@ -14,6 +14,16 @@ export type EmergencyContact = {
 };
 
 export type PublicSettings = {
+  announcement_gate_footer?: {
+    unitName: string;
+    address: string;
+    phone: string;
+    email: string;
+    officeHours: string;
+    content: string;
+    copyright: string;
+    showEmergencyContacts: boolean;
+  };
   app_identity?: AppIdentity;
   emergency_contacts?: EmergencyContact[];
   // Duong dan anh do admin tai len (thuong la duong dan tuong doi

@@ -76,7 +76,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .meta {
@@ -130,7 +130,7 @@
 
   /* Tin dau tien noi bat (anh lon), cac tin sau dang danh sach gon. */
   .card {
-    padding: 12px 0;
+    padding: 18px 0;
     gap: 4px;
     background: none;
     border: none;

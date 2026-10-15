@@ -24,9 +24,14 @@
 .col {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
   min-width: 0;
+  overflow-wrap: anywhere;
 }
+
+.content p { margin: 0; }
+.content > * + * { margin-top: 0.5em; }
+.content img { max-width: 100%; height: auto; }
 
 .unit {
   font-size: 17px;

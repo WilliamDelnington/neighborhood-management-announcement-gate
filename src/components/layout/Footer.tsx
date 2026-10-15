@@ -1,18 +1,25 @@
+import { useMemo } from "react";
 import { useEmergencyContacts } from "@/features/emergency/useEmergencyContacts";
+import { usePublicSettings } from "@/hooks/usePublicSettings";
 import { useSiteIdentity } from "@/hooks/useSiteIdentity";
 import { cn } from "@/utils/cn";
 import { telHref } from "@/utils/formatPhone";
+import { sanitizeHtml } from "@/utils/sanitizeHtml";
 import styles from "./Footer.module.css";
 
 export function Footer() {
   const { identity, unitName } = useSiteIdentity();
   const { contacts } = useEmergencyContacts();
+  const { data } = usePublicSettings();
+  const footer = data?.announcement_gate_footer;
+  const footerUnitName = (footer?.unitName ?? unitName).trim();
+  const content = useMemo(() => sanitizeHtml(footer?.content ?? ""), [footer?.content]);
   const year = new Date().getFullYear();
 
-  const address = identity?.address?.trim();
-  const phone = identity?.phone?.trim();
-  const email = identity?.email?.trim();
-  const officeHours = (identity?.officeHours ?? "")
+  const address = (footer?.address ?? identity?.address)?.trim();
+  const phone = (footer?.phone ?? identity?.phone)?.trim();
+  const email = (footer?.email ?? identity?.email)?.trim();
+  const officeHours = (footer?.officeHours ?? identity?.officeHours ?? "")
     .split(/\r?\n|;/)
     .map(line => line.trim())
     .filter(Boolean);
@@ -20,8 +27,8 @@ export function Footer() {
   return (
     <footer id="lien-he" className={styles.footer} tabIndex={-1}>
       <div className={cn("wrap", styles.grid)}>
-        <div className={styles.col}>
-          <strong className={styles.unit}>{unitName}</strong>
+        {(footerUnitName || address || phone || email) && <div className={styles.col}>
+          {footerUnitName && <strong className={styles.unit}>{footerUnitName}</strong>}
           {address && <span>{address}</span>}
           {phone && (
             <span>
@@ -33,7 +40,7 @@ export function Footer() {
               Email: <a href={`mailto:${email}`}>{email}</a>
             </span>
           )}
-        </div>
+        </div>}
 
         {officeHours.length > 0 && (
           <div className={styles.col}>
@@ -44,7 +51,11 @@ export function Footer() {
           </div>
         )}
 
-        <div className={styles.col}>
+        {content && (
+          <div className={cn(styles.col, styles.content)} dangerouslySetInnerHTML={{ __html: content }} />
+        )}
+
+        {footer?.showEmergencyContacts !== false && <div className={styles.col}>
           <strong className={styles.colTitle}>Khẩn cấp</strong>
           <ul className={styles.hotlines}>
             {contacts.map(contact => (
@@ -59,10 +70,10 @@ export function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </div>}
       </div>
       <div className={cn("wrap", styles.bottom)}>
-        © {year} {unitName}
+        {footer?.copyright?.trim() || `© ${year} ${footerUnitName || unitName}`}
       </div>
     </footer>
   );

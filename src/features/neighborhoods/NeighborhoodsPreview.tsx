@@ -6,6 +6,7 @@ import { EmptyState, ErrorState, LoadingSpinner } from "@/components/common/Stat
 import { Button, RouterLinkButton } from "@/components/ui/Button";
 import { telHref } from "@/utils/formatPhone";
 import { useNeighborhoods } from "./useNeighborhoods";
+import { NeighborhoodHeadquarters } from "./NeighborhoodHeadquarters";
 import styles from "./NeighborhoodsPreview.module.css";
 
 const PREVIEW_COUNT = 3;
@@ -67,6 +68,7 @@ export function NeighborhoodsPreview() {
                     <span className={styles.meta}>
                       Tổ trưởng: {item.leaderName || "Chưa cập nhật"}
                     </span>
+                    <NeighborhoodHeadquarters neighborhood={item} />
                     {phone ? (
                       <a className={styles.phone} href={telHref(phone)}>
                         {phone}

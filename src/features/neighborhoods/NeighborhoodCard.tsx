@@ -1,5 +1,6 @@
 import type { PublicNeighborhood } from "@/types/neighborhood";
 import { telHref } from "@/utils/formatPhone";
+import { NeighborhoodHeadquarters } from "./NeighborhoodHeadquarters";
 import styles from "./NeighborhoodCard.module.css";
 
 export function NeighborhoodCard({ neighborhood }: { neighborhood: PublicNeighborhood }) {
@@ -8,7 +9,6 @@ export function NeighborhoodCard({ neighborhood }: { neighborhood: PublicNeighbo
     .map(part => part.trim())
     .filter(Boolean)
     .join(", ");
-  const address = neighborhood.address.trim();
   const description = neighborhood.description.trim();
 
   return (
@@ -25,13 +25,8 @@ export function NeighborhoodCard({ neighborhood }: { neighborhood: PublicNeighbo
             <dd>{area}</dd>
           </div>
         )}
-        {address && (
-          <div>
-            <dt>Địa chỉ:</dt>
-            <dd>{address}</dd>
-          </div>
-        )}
       </dl>
+      <NeighborhoodHeadquarters neighborhood={neighborhood} />
       {description && <p className={styles.desc}>{description}</p>}
       <div className={styles.contact}>
         <span className={styles.contactText}>

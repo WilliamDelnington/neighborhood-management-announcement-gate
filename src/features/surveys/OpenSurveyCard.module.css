@@ -16,7 +16,7 @@
 .body {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
 }
 
 .title {
@@ -66,8 +66,8 @@
 
 @media (max-width: 760px) {
   .card {
-    padding: 12px 14px;
-    gap: 8px;
+    padding: 18px;
+    gap: 14px;
   }
 
   .heading {

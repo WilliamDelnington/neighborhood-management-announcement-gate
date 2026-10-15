@@ -43,7 +43,7 @@
 }
 
 .desc {
-  margin-top: 6px;
+  margin-top: 12px;
   font-size: 15px;
   color: var(--ink-soft);
   max-width: 70ch;
