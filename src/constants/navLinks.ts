@@ -8,9 +8,8 @@ export type NavLink = {
 
 export const navLinks: NavLink[] = [
   { to: "/", label: "Trang chủ", route: true },
-  { to: "/#ban-do", label: "Bản đồ phường" },
+  { to: "/#ban-do", label: "Bản đồ Tổ dân phố" },
   { to: "/to-dan-pho", label: "Tổ dân phố", route: true },
   { to: "/#tin-tuc", label: "Tin tức" },
-  { to: "/#lich-hop", label: "Lịch họp" },
   { to: "#lien-he", label: "Liên hệ" },
 ];

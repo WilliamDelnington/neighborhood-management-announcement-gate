@@ -10,6 +10,10 @@ export type PublicNeighborhood = {
   leaderName: string;
   streets: string[];
   alleyDescriptions: string[];
+  geometry?: {
+    type: "Polygon" | "MultiPolygon";
+    coordinates: unknown[];
+  } | null;
 };
 
 export type PublicNeighborhoodsData = {

@@ -1,95 +1,54 @@
-import type { ReactNode } from "react";
-import { Link } from "react-router-dom";
 import { Icon, type IconName } from "@/components/ui/Icon";
-import { RESIDENT_APP_URL } from "@/constants/env";
+import { authorizedLoginHref, residentAppHref } from "@/constants/env";
 import { cn } from "@/utils/cn";
 import styles from "./QuickActions.module.css";
 
-type Action = {
+type SignInOption = {
   key: string;
   icon: IconName;
-  // Nhan day du (may tinh) va nhan ngan (dien thoai, luoi 2x2).
   label: string;
-  shortLabel: string;
   description: string;
-  danger?: boolean;
-  to?: string;
   href?: string;
 };
 
-const ACTIONS: Action[] = [
+const OPTIONS: SignInOption[] = [
   {
-    key: "ban-do",
-    icon: "pin",
-    label: "Bản đồ phường",
-    shortLabel: "Bản đồ phường",
-    description: "Khám phá địa bàn phường trên bản đồ tương tác",
-    to: "/#ban-do",
+    key: "citizen",
+    icon: "user",
+    label: "Đăng nhập cư dân",
+    description: "Dành cho cư dân sử dụng dịch vụ, gửi phản ánh và tham gia khảo sát tại địa phương.",
+    href: residentAppHref("/login"),
   },
   {
-    key: "to-dan-pho",
-    icon: "pin",
-    label: "Tìm Tổ dân phố của tôi",
-    shortLabel: "Tổ dân phố của tôi",
-    description: "Tổ trưởng và số liên hệ chính thức của tổ",
-    to: "/to-dan-pho",
-  },
-  {
-    key: "phan-anh",
-    icon: "chat",
-    label: "Gửi phản ánh",
-    shortLabel: "Gửi phản ánh",
-    description: "Qua ứng dụng cư dân trên Zalo",
-    ...(RESIDENT_APP_URL ? { href: RESIDENT_APP_URL } : { to: "#lien-he" }),
-  },
-  {
-    key: "lien-he",
-    icon: "phone",
-    label: "Liên hệ & giờ làm việc",
-    shortLabel: "Số khẩn cấp",
-    description: "Trụ sở UBND phường, số điện thoại",
-    danger: true,
-    to: "#lien-he",
+    key: "authorized",
+    icon: "shield",
+    label: "Đăng nhập người dùng được ủy quyền",
+    description: "Dành cho cán bộ và người dùng được cấp quyền quản lý thông tin, dịch vụ tại địa phương.",
+    href: authorizedLoginHref(),
   },
 ];
 
-function ActionLink({ action, children }: { action: Action; children: ReactNode }) {
-  const className = cn(styles.card, action.danger && styles.danger);
-  if (action.href) {
-    return (
-      <a className={className} href={action.href} target="_blank" rel="noreferrer">
-        {children}
-      </a>
-    );
-  }
-  return (
-    <Link className={className} to={action.to ?? "/"}>
-      {children}
-    </Link>
-  );
-}
-
 export function QuickActions() {
   return (
-    <nav aria-label="Truy cập nhanh" className={cn("wrap", styles.wrap)}>
+    <section aria-label="Chọn hình thức đăng nhập" className={cn("wrap", styles.wrap)}>
       <ul className={styles.grid}>
-        {ACTIONS.map(action => (
-          <li key={action.key}>
-            <ActionLink action={action}>
-              <span className={styles.icon}>
-                <Icon name={action.icon} />
-              </span>
-              <span className={styles.text}>
-                <strong className={styles.label}>
-                  <span className={styles.long}>{action.label}</span>
-                  <span className={styles.short}>{action.shortLabel}</span>
-                </strong>
-                <span className={styles.desc}>{action.description}</span>
-              </span>
-            </ActionLink>
+        {OPTIONS.map(option => (
+          <li key={option.key} className={styles.card}>
+            <span className={styles.icon}><Icon name={option.icon} size={26} /></span>
+            <div className={styles.text}>
+              <h2 className={styles.label}>{option.label}</h2>
+              <p className={styles.desc}>{option.description}</p>
+              {option.href ? (
+                <a className={styles.signIn} href={option.href}>
+                  {option.label}<Icon name="chevron" size={18} />
+                </a>
+              ) : (
+                <span className={styles.unavailable}>Đăng nhập hiện chưa khả dụng</span>
+              )}
+            </div>
           </li>
         ))}
       </ul>
-    </nav>
+    </section>
   );
 }

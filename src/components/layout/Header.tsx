@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Icon } from "@/components/ui/Icon";
+import { residentAppHref } from "@/constants/env";
 import { navLinks } from "@/constants/navLinks";
 import { useEmergencyContacts } from "@/features/emergency/useEmergencyContacts";
 import { useSiteIdentity } from "@/hooks/useSiteIdentity";
@@ -53,6 +54,8 @@ export function Header() {
   }, [open]);
 
   const showLogo = !!logoUrl && !logoFailed;
+  // Dang nhap cu dan = mo trang dang nhap cua ung dung cu dan (cung tab).
+  const loginHref = residentAppHref("/login");
 
   return (
     <header className={styles.header}>
@@ -93,6 +96,13 @@ export function Header() {
             ))}
           </div>
 
+          {loginHref && (
+            <a className={styles.loginButton} href={loginHref}>
+              <Icon name="user" />
+              Đăng nhập cư dân
+            </a>
+          )}
+
           <button
             ref={toggleRef}
             type="button"
@@ -131,6 +141,14 @@ export function Header() {
             </li>
           ))}
         </ul>
+        {loginHref && (
+          <div className={styles.navLogin}>
+            <a className={styles.navLoginButton} href={loginHref}>
+              <Icon name="user" />
+              Đăng nhập cư dân
+            </a>
+          </div>
+        )}
         <div className={styles.navHotlines}>
           {contacts.map(contact => (
             <a

@@ -1,16 +1,13 @@
 .hero {
   position: relative;
   background-color: var(--hero);
-  background-size: cover;
-  background-position: center;
 }
 
-/* Lop phu toi giup chu trang doc duoc tren moi anh banner. */
-.withImage::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(10, 30, 60, 0.78) 0%, rgba(10, 30, 60, 0.45) 60%, rgba(10, 30, 60, 0.25) 100%);
+/* Anh hien tron ven, rong het man hinh, cao theo dung ti le cua anh. */
+.banner {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .inner {
@@ -40,6 +37,17 @@
   display: none;
 }
 
+/* Duoi anh: dai tieu de gon hon, anh da chiem phan lon chieu cao. */
+.innerUnderImage {
+  padding-top: 28px;
+  padding-bottom: 84px;
+}
+
+.innerUnderImage .title {
+  font-size: 32px;
+  max-width: none;
+}
+
 @media (max-width: 760px) {
   .inner {
     gap: 10px;
@@ -47,7 +55,13 @@
     padding-bottom: 64px;
   }
 
-  .title {
+  .innerUnderImage {
+    padding-top: 18px;
+    padding-bottom: 60px;
+  }
+
+  .title,
+  .innerUnderImage .title {
     font-size: 26px;
     line-height: 1.25;
   }

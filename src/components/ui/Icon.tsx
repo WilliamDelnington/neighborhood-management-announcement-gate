@@ -6,9 +6,23 @@ export type IconName =
   | "chevron"
   | "menu"
   | "close"
-  | "search";
+  | "search"
+  | "user"
+  | "shield";
 
 const PATHS: Record<IconName, JSX.Element> = {
+  shield: (
+    <>
+      <path d="M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6z" />
+      <path d="M8 12l3 3 5-6" />
+    </>
+  ),
+  user: (
+    <>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21a8 8 0 0 1 16 0" />
+    </>
+  ),
   calendar: (
     <>
       <rect x="3" y="4" width="18" height="18" rx="2" />

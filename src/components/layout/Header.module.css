@@ -125,6 +125,34 @@
   background: #fbdde1;
 }
 
+/* Dang nhap cu dan: mo trang dang nhap cua ung dung cu dan. */
+.loginButton,
+.navLoginButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.loginButton:hover,
+.navLoginButton:hover {
+  color: #fff;
+  background: var(--primary-deep);
+}
+
+.navLogin {
+  display: none;
+}
+
 .menuToggle {
   display: none;
   width: 48px;
@@ -174,6 +202,22 @@
 }
 
 @media (max-width: 760px) {
+  .loginButton {
+    display: none;
+  }
+
+  .navLogin {
+    display: block;
+    padding: 14px 16px 0;
+  }
+
+  .navLoginButton {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    font-size: 15px;
+  }
+
   .brandRow {
     flex-wrap: nowrap;
     gap: 10px;
