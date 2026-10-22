@@ -16,7 +16,7 @@
   flex-direction: column;
   gap: 14px;
   padding-top: 56px;
-  padding-bottom: 96px;
+  padding-bottom: 40px;
 }
 
 .title {
@@ -40,7 +40,7 @@
 /* Duoi anh: dai tieu de gon hon, anh da chiem phan lon chieu cao. */
 .innerUnderImage {
   padding-top: 28px;
-  padding-bottom: 84px;
+  padding-bottom: 28px;
 }
 
 .innerUnderImage .title {
@@ -52,12 +52,12 @@
   .inner {
     gap: 10px;
     padding-top: 24px;
-    padding-bottom: 64px;
+    padding-bottom: 24px;
   }
 
   .innerUnderImage {
     padding-top: 18px;
-    padding-bottom: 60px;
+    padding-bottom: 18px;
   }
 
   .title,

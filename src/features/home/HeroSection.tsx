@@ -30,11 +30,11 @@ export function HeroSection() {
         <h1 className={styles.title}>Thông tin và dịch vụ cho cư dân {wardInSentence}</h1>
         <p className={styles.lead}>
           <span className={styles.leadLong}>
-            Đăng nhập với tài khoản cư dân hoặc tài khoản được ủy quyền
-            để sử dụng các dịch vụ của địa phương.
+            Tra cứu bản đồ, thông tin Tổ dân phố và theo dõi tin tức,
+            thông báo tại địa phương.
           </span>
           <span className={styles.leadShort}>
-            Chọn tài khoản cư dân hoặc tài khoản được ủy quyền để đăng nhập.
+            Bản đồ, thông tin Tổ dân phố và tin tức địa phương.
           </span>
         </p>
       </div>

@@ -1,6 +1,5 @@
 import { AnnouncementPanel } from "@/features/announcements/AnnouncementPanel";
 import { HeroSection } from "@/features/home/HeroSection";
-import { QuickActions } from "@/features/home/QuickActions";
 import { LinksSection } from "@/features/links/LinksSection";
 import { WardMapSection } from "@/features/map/WardMapSection";
 import { NeighborhoodsPreview } from "@/features/neighborhoods/NeighborhoodsPreview";
@@ -20,7 +19,6 @@ export function HomePage() {
   return (
     <>
       <HeroSection />
-      <QuickActions />
       <div className={cn("wrap", styles.mapSection)}>
         <WardMapSection />
       </div>
