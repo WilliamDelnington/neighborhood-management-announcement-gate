@@ -4,6 +4,7 @@ import type { Map as MapInstance, GeoJSONSource, StyleSpecification } from "mapl
 import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { PublicNeighborhood } from "@/types/neighborhood";
+import { googleMapsDirectionsUrl } from "@/utils/googleMaps";
 import type { PublicPoi } from "./usePublicPois";
 import { geometryBounds, neighborhoodFeatures, neighborhoodGeometry } from "./neighborhoodGeometry";
 import styles from "./WardMapSection.module.css";
@@ -149,7 +150,14 @@ export default function NeighborhoodBoundaryMap({ neighborhoods, selectedId, onS
     title.textContent = poi.name;
     const address = document.createElement("p");
     address.textContent = poi.address;
-    content.append(title, address);
+    const directions = document.createElement("a");
+    directions.href = googleMapsDirectionsUrl(poi.lat, poi.lng);
+    directions.target = "_blank";
+    directions.rel = "noopener noreferrer";
+    directions.textContent = "Chỉ đường trên Google Maps →";
+    directions.setAttribute("aria-label", `Chỉ đường đến ${poi.name} trên Google Maps`);
+    directions.className = styles.poiDirections;
+    content.append(title, address, directions);
     const popup = new maplibregl.Popup({ closeButton: false }).setLngLat([poi.lng, poi.lat]).setDOMContent(content).addTo(map);
     return () => { popup.remove(); };
   }, [pois, selectedPoiId, ready]);

@@ -6,6 +6,7 @@ import { useNeighborhoods } from "@/features/neighborhoods/useNeighborhoods";
 import { useSiteIdentity } from "@/hooks/useSiteIdentity";
 import { cn } from "@/utils/cn";
 import { telHref } from "@/utils/formatPhone";
+import { googleMapsDirectionsUrl } from "@/utils/googleMaps";
 import { neighborhoodGeometry } from "./neighborhoodGeometry";
 import { MapErrorBoundary } from "./MapErrorBoundary";
 import { usePublicPois, type PublicPoi } from "./usePublicPois";
@@ -87,7 +88,14 @@ export function WardMapSection({ className }: { className?: string }) {
             {poiQuery.data && <p className={styles.meta} role="status">{filteredPois.length} địa điểm đã xác minh{poiQuery.data.truncated ? " · Thu hẹp loại địa điểm để xem thêm kết quả" : ""}</p>}
             {poiQuery.data && !filteredPois.length && <EmptyState message={query ? "Không tìm thấy địa điểm phù hợp." : "Chưa có địa điểm đã xác minh thuộc loại đã chọn trong phường."} />}
             <ul className={styles.list} aria-label="Địa điểm tiện ích">
-              {filteredPois.map(point => <li key={point.id}><button type="button" className={cn(styles.option, point.id === selectedPoiId && styles.selected)} aria-pressed={point.id === selectedPoiId} onClick={() => selectPoi(point.id)}><strong>{point.name}</strong><span>{point.address || "Chưa cập nhật địa chỉ"}</span><span className={styles.boundaryStatus}>{typeQuery.data?.categories.find(type => type.key === point.category)?.label}</span></button></li>)}
+              {filteredPois.map(point => <li key={point.id}>
+                <button type="button" className={cn(styles.option, point.id === selectedPoiId && styles.selected)} aria-pressed={point.id === selectedPoiId} onClick={() => selectPoi(point.id)}>
+                  <strong>{point.name}</strong>
+                  <span>{point.address || "Chưa cập nhật địa chỉ"}</span>
+                  <span className={styles.boundaryStatus}>{typeQuery.data?.categories.find(type => type.key === point.category)?.label}</span>
+                </button>
+                <a className={styles.poiDirections} href={googleMapsDirectionsUrl(point.lat, point.lng)} target="_blank" rel="noopener noreferrer" aria-label={`Chỉ đường đến ${point.name} trên Google Maps`}>Chỉ đường trên Google Maps →</a>
+              </li>)}
             </ul>
           </> : <>
             {data && <p className={styles.meta} role="status">{filtered.length} Tổ dân phố · {mappedCount} tổ có ranh giới trên bản đồ</p>}
@@ -108,7 +116,7 @@ export function WardMapSection({ className }: { className?: string }) {
           <h3>{selectedPoi.name}</h3>
           <p>{selectedPoi.address || "Chưa cập nhật địa chỉ"}</p>
           <p className={styles.meta}>Địa điểm đã được xác minh trong danh mục tiện ích.</p>
-          <a className={styles.more} href={`https://www.google.com/maps/dir/?api=1&destination=${selectedPoi.lat},${selectedPoi.lng}`} target="_blank" rel="noopener noreferrer">Chỉ đường đến địa điểm →</a>
+          <a className={styles.more} href={googleMapsDirectionsUrl(selectedPoi.lat, selectedPoi.lng)} target="_blank" rel="noopener noreferrer">Chỉ đường đến địa điểm →</a>
         </> : selected ? <>
           <h3>{selected.name}</h3>
           <p>Tổ trưởng: {selected.leaderName || "Chưa cập nhật"}</p>

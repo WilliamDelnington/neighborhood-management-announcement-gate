@@ -123,3 +123,16 @@
 .activeChip { background: var(--primary); color: #fff; border-color: var(--primary); }
 .reloadMap, .inlineButton { color: var(--primary); background: var(--surface); border: 1px solid var(--field-line); border-radius: 6px; padding: 8px 12px; cursor: pointer; min-height: 44px; }
 .reloadMap { display: block; margin-top: 8px; }
+
+.poiDirections {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.poiDirections:hover { text-decoration: underline; }
