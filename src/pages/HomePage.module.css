@@ -2,7 +2,7 @@
   padding-top: 40px;
 }
 
-/* Hang "Tin tuc | cot phai (Khao sat, Thong bao)". */
+/* Hang "Tin tuc | Thong bao". */
 .newsRow {
   padding-top: 56px;
   display: grid;
@@ -13,19 +13,8 @@
   row-gap: 24px;
 }
 
-.newsRow.withSurvey {
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "news survey"
-    "news notices";
-}
-
 .news {
   grid-area: news;
-}
-
-.survey {
-  grid-area: survey;
 }
 
 .notices {
@@ -41,17 +30,9 @@
 }
 
 @media (max-width: 960px) {
-  .newsRow,
-  .newsRow.withSurvey {
+  .newsRow {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: none;
-    grid-template-areas:
-      "survey"
-      "news"
-      "notices";
-  }
-
-  .newsRow:not(.withSurvey) {
     grid-template-areas:
       "news"
       "notices";
