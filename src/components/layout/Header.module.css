@@ -25,7 +25,7 @@
 
 .brand {
   grid-column: 1;
-  grid-row: 1 / 3;
+  grid-row: 1;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -93,41 +93,6 @@
 .sub {
   font-size: 13px;
   color: var(--ink-soft);
-}
-
-.hotlines {
-  grid-column: 2;
-  grid-row: 2;
-  justify-content: flex-end;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-}
-
-.hotlinesLabel {
-  font-size: 13px;
-  color: var(--ink-soft);
-}
-
-.hotlineChip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 12px;
-  border-radius: var(--radius-sm);
-  background: var(--danger-tint);
-  color: var(--danger);
-  border: 1px solid var(--danger-line);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.hotlineChip:hover {
-  color: var(--danger);
-  background: #fbdde1;
 }
 
 .authActions {
@@ -211,10 +176,6 @@
   border-bottom-color: #fff;
 }
 
-.navHotlines {
-  display: none;
-}
-
 @media (max-width: 760px) {
   .authActions {
     flex-direction: column;
@@ -269,8 +230,7 @@
     font-size: 17px;
   }
 
-  .sub,
-  .hotlines {
+  .sub {
     display: none;
   }
 
@@ -322,29 +282,6 @@
     font-weight: 600;
   }
 
-  .navHotlines {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 8px;
-    padding: 14px 16px;
-  }
-
-  .navHotline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    border-radius: var(--radius-sm);
-    background: var(--danger-tint);
-    color: var(--danger);
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .navHotline:hover {
-    color: var(--danger);
-  }
 }
 
 @media (max-width: 400px) {

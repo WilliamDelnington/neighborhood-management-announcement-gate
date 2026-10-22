@@ -3,10 +3,8 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Icon } from "@/components/ui/Icon";
 import { authorizedLoginHref, residentAppHref } from "@/constants/env";
 import { navLinks } from "@/constants/navLinks";
-import { useEmergencyContacts } from "@/features/emergency/useEmergencyContacts";
 import { useSiteIdentity } from "@/hooks/useSiteIdentity";
 import { cn } from "@/utils/cn";
-import { telHref } from "@/utils/formatPhone";
 import styles from "./Header.module.css";
 
 function Seal({ ward }: { ward: string }) {
@@ -30,7 +28,6 @@ export function Header() {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
   const { ward, city, logoUrl } = useSiteIdentity();
-  const { contacts } = useEmergencyContacts();
 
   // Dong menu dien thoai moi khi dieu huong.
   useEffect(() => {
@@ -86,19 +83,6 @@ export function Header() {
             </span>
           </Link>
 
-          <div className={styles.hotlines}>
-            <span className={styles.hotlinesLabel}>Đường dây khẩn cấp:</span>
-            {contacts.map(contact => (
-              <a
-                key={`${contact.label}-${contact.phone}`}
-                className={styles.hotlineChip}
-                href={telHref(contact.phone)}
-              >
-                {contact.phone} {contact.shortLabel}
-              </a>
-            ))}
-          </div>
-
           <div className={styles.authActions} role="group" aria-label="Đăng nhập tài khoản">
             {signInOptions.map(option => option.href ? (
               <a key={option.label} className={styles.loginButton} href={option.href}>
@@ -151,18 +135,6 @@ export function Header() {
             </li>
           ))}
         </ul>
-        <div className={styles.navHotlines}>
-          {contacts.map(contact => (
-            <a
-              key={`${contact.label}-${contact.phone}`}
-              className={styles.navHotline}
-              href={telHref(contact.phone)}
-              aria-label={`Gọi ${contact.shortLabel}: ${contact.phone}`}
-            >
-              {contact.phone}
-            </a>
-          ))}
-        </div>
       </nav>
     </header>
   );
