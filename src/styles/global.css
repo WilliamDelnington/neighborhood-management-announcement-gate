@@ -89,9 +89,9 @@ input {
 
 /* Shared gutters must not reset section spacing or narrower article widths. */
 :where(.wrap) {
-  max-width: 1440px;
+  max-width: none;
   margin-inline: auto;
-  padding-inline: 16px;
+  padding-inline: 8px;
 }
 
 .visually-hidden {
@@ -124,6 +124,6 @@ input {
 
 @media (max-width: 760px) {
   :where(.wrap) {
-    padding-inline: 8px;
+    padding-inline: 4px;
   }
 }
