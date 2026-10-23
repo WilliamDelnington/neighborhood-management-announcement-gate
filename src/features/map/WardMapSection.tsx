@@ -129,7 +129,7 @@ export function WardMapSection({ className }: { className?: string }) {
           {!neighborhoodGeometry(selected) && <p className={styles.meta}>Tổ này chưa có ranh giới được công bố trên bản đồ.</p>}
         </> : <p>Chọn một Tổ dân phố hoặc địa điểm trong danh sách hay trên bản đồ để xem chi tiết và chỉ đường.</p>}
       </div>
-      <p className={styles.meta}>Ranh giới và địa điểm do đơn vị quản lý cập nhật. Chỉ hiển thị địa điểm tiện ích đã xác minh; loại chưa có dữ liệu sẽ để trống. Màu và biểu tượng của địa điểm khớp với loại đã chọn ở trên; vùng màu xanh là Tổ dân phố.</p>
+      <p className={styles.meta}>Ranh giới và địa điểm do đơn vị quản lý cập nhật. Chỉ hiển thị loại địa điểm có tiện ích đã xác minh trong phường. Màu và biểu tượng của địa điểm khớp với loại đã chọn ở trên; vùng màu xanh là Tổ dân phố.</p>
     </section>
   );
 }
