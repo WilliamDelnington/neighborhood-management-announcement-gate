@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 type PoiAppearance = { label: string; color: string; paths: string[] };
 
 const APPEARANCES: Record<string, PoiAppearance> = {
@@ -16,7 +18,11 @@ const APPEARANCES: Record<string, PoiAppearance> = {
 const DEFAULT: PoiAppearance = { label: "Địa điểm", color: "#475569", paths: ["M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0ZM15 10a3 3 0 1 0-6 0 3 3 0 0 0 6 0Z"] };
 
 export function getPoiAppearance(category: string): PoiAppearance {
-  return APPEARANCES[category] ?? DEFAULT;
+  return Object.prototype.hasOwnProperty.call(APPEARANCES, category) ? APPEARANCES[category] : DEFAULT;
+}
+
+export function poiColorStyle(category: string): CSSProperties {
+  return { "--poi-color": getPoiAppearance(category).color } as CSSProperties;
 }
 
 export function createPoiIcon(category: string): SVGSVGElement {

@@ -10,7 +10,8 @@ import { googleMapsDirectionsUrl } from "@/utils/googleMaps";
 import { neighborhoodGeometry } from "./neighborhoodGeometry";
 import { MapErrorBoundary } from "./MapErrorBoundary";
 import { usePublicPois, type PublicPoi } from "./usePublicPois";
-import { PoiCategoryIcon, poiColorStyle } from "./PoiCategoryIcon";
+import { PoiCategoryIcon } from "./PoiCategoryIcon";
+import { poiColorStyle } from "./poiAppearance";
 import styles from "./WardMapSection.module.css";
 
 const NeighborhoodBoundaryMap = lazy(() => import("./NeighborhoodBoundaryMap"));

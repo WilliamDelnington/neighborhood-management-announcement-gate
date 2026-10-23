@@ -182,7 +182,7 @@ export default function NeighborhoodBoundaryMap({ neighborhoods, selectedId, onS
     directions.setAttribute("aria-label", `Chỉ đường đến ${poi.name} trên Google Maps`);
     directions.className = styles.poiDirections;
     content.append(heading, address, directions);
-    const popup = new maplibregl.Popup({ closeButton: false, className: styles.poiPopup }).setLngLat([poi.lng, poi.lat]).setDOMContent(content).addTo(map);
+    const popup = new maplibregl.Popup({ closeButton: false, className: styles.poiPopup, offset: 24 }).setLngLat([poi.lng, poi.lat]).setDOMContent(content).addTo(map);
     return () => { popup.remove(); };
   }, [pois, selectedPoiId, ready]);
 
