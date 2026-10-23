@@ -3,6 +3,10 @@
   z-index: 20;
 }
 
+.header :global(.wrap) {
+  padding-inline: 16px;
+}
+
 .accentBar {
   height: 4px;
   background: var(--accent);
@@ -177,6 +181,10 @@
 }
 
 @media (max-width: 760px) {
+  .header :global(.wrap) {
+    padding-inline: 8px;
+  }
+
   .authActions {
     flex-direction: column;
     gap: 6px;
