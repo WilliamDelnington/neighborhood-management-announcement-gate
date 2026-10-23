@@ -136,3 +136,39 @@
 }
 
 .poiDirections:hover { text-decoration: underline; }
+
+.poiCategoryChip { color: var(--poi-color); border-color: var(--poi-color); }
+.poiCategoryChip:hover { border-color: var(--poi-color); box-shadow: inset 0 0 0 1px var(--poi-color); }
+.poiCategoryChip.activeChip { background: var(--poi-color); border-color: var(--poi-color); color: #fff; }
+.poiCategoryChip svg { flex-shrink: 0; }
+.poiHeading { display: flex; align-items: center; gap: 10px; }
+.option .poiHeading { font-size: 14px; }
+.poiHeading strong { min-width: 0; }
+.poiBadge, .markerBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--poi-color);
+  color: #fff;
+  border-radius: 50%;
+}
+.poiBadge { width: 32px; height: 32px; }
+.poiMarker {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.markerBadge { width: 36px; height: 36px; border: 2px solid #fff; box-shadow: 0 2px 6px #17212b66; }
+.poiMarker[aria-pressed="true"] { z-index: 1; }
+.poiMarker[aria-pressed="true"] .markerBadge { outline: 3px solid var(--ink); outline-offset: 1px; }
+.poiMarker:focus-visible { outline: none; }
+.poiMarker:focus-visible .markerBadge { outline: 3px solid var(--primary); outline-offset: 3px; }
+.poiMarker:hover .markerBadge { box-shadow: 0 3px 10px #17212b99; }
+.poiPopup { z-index: 2; }

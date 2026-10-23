@@ -10,6 +10,7 @@ import { googleMapsDirectionsUrl } from "@/utils/googleMaps";
 import { neighborhoodGeometry } from "./neighborhoodGeometry";
 import { MapErrorBoundary } from "./MapErrorBoundary";
 import { usePublicPois, type PublicPoi } from "./usePublicPois";
+import { PoiCategoryIcon, poiColorStyle } from "./PoiCategoryIcon";
 import styles from "./WardMapSection.module.css";
 
 const NeighborhoodBoundaryMap = lazy(() => import("./NeighborhoodBoundaryMap"));
@@ -70,7 +71,7 @@ export function WardMapSection({ className }: { className?: string }) {
         <p id="poi-category-help" className={styles.meta}>Chọn loại địa điểm muốn hiển thị. Có thể chọn nhiều loại; vuốt ngang để xem thêm.</p>
         <div className={styles.categoryStrip} role="group" aria-label="Loại địa điểm trên bản đồ" aria-describedby="poi-category-help" tabIndex={0}>
           <button className={cn(styles.categoryChip, !showPois && styles.activeChip)} type="button" aria-pressed={!showPois} onClick={() => { setSelectedTypes([]); setQuery(""); setSelectedPoiId(null); }}>📍 Tổ dân phố</button>
-          {typeQuery.data?.categories.map(type => <button key={type.key} type="button" className={cn(styles.categoryChip, selectedTypes.includes(type.key) && styles.activeChip)} aria-pressed={selectedTypes.includes(type.key)} onClick={() => toggleType(type.key)}><span aria-hidden="true">{type.symbol}</span> {type.label}</button>)}
+          {typeQuery.data?.categories.map(type => <button key={type.key} type="button" style={poiColorStyle(type.key)} className={cn(styles.categoryChip, styles.poiCategoryChip, selectedTypes.includes(type.key) && styles.activeChip)} aria-pressed={selectedTypes.includes(type.key)} onClick={() => toggleType(type.key)}><PoiCategoryIcon category={type.key} /> {type.label}</button>)}
         </div>
         {typeQuery.isLoading && <p className={styles.meta} role="status">Đang tải loại địa điểm…</p>}
         {typeQuery.isError && <p className={styles.meta} role="status">Chưa tải được loại địa điểm. <button className={styles.inlineButton} type="button" onClick={() => void typeQuery.refetch()}>Thử lại</button></p>}
@@ -90,7 +91,7 @@ export function WardMapSection({ className }: { className?: string }) {
             <ul className={styles.list} aria-label="Địa điểm tiện ích">
               {filteredPois.map(point => <li key={point.id}>
                 <button type="button" className={cn(styles.option, point.id === selectedPoiId && styles.selected)} aria-pressed={point.id === selectedPoiId} onClick={() => selectPoi(point.id)}>
-                  <strong>{point.name}</strong>
+                  <span className={styles.poiHeading}><span className={styles.poiBadge} style={poiColorStyle(point.category)}><PoiCategoryIcon category={point.category} /></span><strong>{point.name}</strong></span>
                   <span>{point.address || "Chưa cập nhật địa chỉ"}</span>
                   <span className={styles.boundaryStatus}>{typeQuery.data?.categories.find(type => type.key === point.category)?.label}</span>
                 </button>
@@ -113,7 +114,7 @@ export function WardMapSection({ className }: { className?: string }) {
       </div>
       <div className={styles.details} aria-live="polite">
         {selectedPoi ? <>
-          <h3>{selectedPoi.name}</h3>
+          <h3 className={styles.poiHeading}><span className={styles.poiBadge} style={poiColorStyle(selectedPoi.category)}><PoiCategoryIcon category={selectedPoi.category} /></span>{selectedPoi.name}</h3>
           <p>{selectedPoi.address || "Chưa cập nhật địa chỉ"}</p>
           <p className={styles.meta}>Địa điểm đã được xác minh trong danh mục tiện ích.</p>
           <a className={styles.more} href={googleMapsDirectionsUrl(selectedPoi.lat, selectedPoi.lng)} target="_blank" rel="noopener noreferrer">Chỉ đường đến địa điểm →</a>
@@ -127,7 +128,7 @@ export function WardMapSection({ className }: { className?: string }) {
           {!neighborhoodGeometry(selected) && <p className={styles.meta}>Tổ này chưa có ranh giới được công bố trên bản đồ.</p>}
         </> : <p>Chọn một Tổ dân phố hoặc địa điểm trong danh sách hay trên bản đồ để xem chi tiết và chỉ đường.</p>}
       </div>
-      <p className={styles.meta}>Ranh giới và địa điểm do đơn vị quản lý cập nhật. Chỉ hiển thị địa điểm tiện ích đã xác minh; loại chưa có dữ liệu sẽ để trống. Chấm màu cam là địa điểm tiện ích, vùng màu xanh là Tổ dân phố.</p>
+      <p className={styles.meta}>Ranh giới và địa điểm do đơn vị quản lý cập nhật. Chỉ hiển thị địa điểm tiện ích đã xác minh; loại chưa có dữ liệu sẽ để trống. Màu và biểu tượng của địa điểm khớp với loại đã chọn ở trên; vùng màu xanh là Tổ dân phố.</p>
     </section>
   );
 }

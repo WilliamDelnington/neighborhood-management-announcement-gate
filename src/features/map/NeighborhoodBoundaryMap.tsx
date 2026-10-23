@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import * as maplibregl from "maplibre-gl";
-import type { Map as MapInstance, GeoJSONSource, StyleSpecification } from "maplibre-gl";
+import type { Map as MapInstance, StyleSpecification } from "maplibre-gl";
 import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { PublicNeighborhood } from "@/types/neighborhood";
 import { googleMapsDirectionsUrl } from "@/utils/googleMaps";
 import type { PublicPoi } from "./usePublicPois";
 import { geometryBounds, neighborhoodFeatures, neighborhoodGeometry } from "./neighborhoodGeometry";
+import { createPoiIcon, getPoiAppearance } from "./poiAppearance";
 import styles from "./WardMapSection.module.css";
 
 // Vite must bundle this worker; otherwise a VPS build shows tiles without data.
@@ -35,6 +36,7 @@ type Props = {
 export default function NeighborhoodBoundaryMap({ neighborhoods, selectedId, onSelect, pois, selectedPoiId, onSelectPoi, fallback }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapInstance | null>(null);
+  const markerButtons = useRef(new Map<string, HTMLButtonElement>());
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const [tileError, setTileError] = useState(false);
@@ -84,10 +86,6 @@ export default function NeighborhoodBoundaryMap({ neighborhoods, selectedId, onS
           current.addSource("neighborhoods", { type: "geojson", data });
           current.addLayer({ id: "areas", type: "fill", source: "neighborhoods", paint: { "fill-color": "#0d4b91", "fill-opacity": 0.15 } });
           current.addLayer({ id: "outlines", type: "line", source: "neighborhoods", paint: { "line-color": "#0d4b91", "line-width": 2 } });
-          current.addSource("public-pois", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
-          current.addLayer({ id: "poi-points", type: "circle", source: "public-pois", paint: {
-            "circle-radius": 7, "circle-color": "#b45309", "circle-stroke-color": "#ffffff", "circle-stroke-width": 2,
-          } });
           if (data.features.length) {
             const bounds = new maplibregl.LngLatBounds();
             data.features.forEach(feature => {
@@ -101,13 +99,11 @@ export default function NeighborhoodBoundaryMap({ neighborhoods, selectedId, onS
         } catch { clearTimeout(timeout); setFailed(true); }
       });
       current.on("click", event => {
-        if (!current.getLayer("poi-points")) return;
-        const features = current.queryRenderedFeatures(event.point, { layers: ["poi-points", "areas"] });
-        const poi = features.find(feature => feature.layer.id === "poi-points");
-        if (poi?.properties?.id) onSelectPoi(String(poi.properties.id));
-        else if (features[0]?.properties?.id) onSelect(String(features[0].properties.id));
+        if (!current.getLayer("areas")) return;
+        const features = current.queryRenderedFeatures(event.point, { layers: ["areas"] });
+        if (features[0]?.properties?.id) onSelect(String(features[0].properties.id));
       });
-      for (const layer of ["areas", "poi-points"]) {
+      for (const layer of ["areas"]) {
         current.on("mouseenter", layer, () => { current.getCanvas().style.cursor = "pointer"; });
         current.on("mouseleave", layer, () => { current.getCanvas().style.cursor = ""; });
       }
@@ -137,17 +133,45 @@ export default function NeighborhoodBoundaryMap({ neighborhoods, selectedId, onS
 
   useEffect(() => {
     const map = mapRef.current;
-    if (!ready || !map?.getSource("public-pois")) return;
-    (map.getSource("public-pois") as GeoJSONSource).setData({ type: "FeatureCollection", features: pois.map(poi => ({
-      type: "Feature", properties: { id: poi.id, name: poi.name }, geometry: { type: "Point", coordinates: [poi.lng, poi.lat] },
-    })) });
-    map.setPaintProperty("poi-points", "circle-radius", ["case", ["==", ["get", "id"], selectedPoiId ?? ""], 10, 7]);
+    if (!ready || !map?.getLayer("areas")) return;
+    const buttons = markerButtons.current;
+    const markers = pois.map(poi => {
+      const appearance = getPoiAppearance(poi.category);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = styles.poiMarker;
+      button.style.setProperty("--poi-color", appearance.color);
+      button.setAttribute("aria-label", `${appearance.label}: ${poi.name}`);
+      button.setAttribute("aria-pressed", "false");
+      button.title = `${appearance.label}: ${poi.name}`;
+      const badge = document.createElement("span");
+      badge.className = styles.markerBadge;
+      badge.append(createPoiIcon(poi.category));
+      button.append(badge);
+      button.addEventListener("click", event => { event.stopPropagation(); onSelectPoi(poi.id); });
+      buttons.set(poi.id, button);
+      return new maplibregl.Marker({ element: button, anchor: "center" }).setLngLat([poi.lng, poi.lat]).addTo(map);
+    });
+    return () => { markers.forEach(marker => marker.remove()); buttons.clear(); };
+  }, [pois, ready, onSelectPoi]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!ready || !map?.getLayer("areas")) return;
+    markerButtons.current.forEach((button, id) => button.setAttribute("aria-pressed", String(id === selectedPoiId)));
     const poi = pois.find(point => point.id === selectedPoiId);
     if (!poi) return;
     map.jumpTo({ center: [poi.lng, poi.lat], zoom: 16 });
     const content = document.createElement("div");
     const title = document.createElement("strong");
     title.textContent = poi.name;
+    const heading = document.createElement("div");
+    heading.className = styles.poiHeading;
+    const icon = document.createElement("span");
+    icon.className = styles.poiBadge;
+    icon.style.setProperty("--poi-color", getPoiAppearance(poi.category).color);
+    icon.append(createPoiIcon(poi.category));
+    heading.append(icon, title);
     const address = document.createElement("p");
     address.textContent = poi.address;
     const directions = document.createElement("a");
@@ -157,8 +181,8 @@ export default function NeighborhoodBoundaryMap({ neighborhoods, selectedId, onS
     directions.textContent = "Chỉ đường trên Google Maps →";
     directions.setAttribute("aria-label", `Chỉ đường đến ${poi.name} trên Google Maps`);
     directions.className = styles.poiDirections;
-    content.append(title, address, directions);
-    const popup = new maplibregl.Popup({ closeButton: false }).setLngLat([poi.lng, poi.lat]).setDOMContent(content).addTo(map);
+    content.append(heading, address, directions);
+    const popup = new maplibregl.Popup({ closeButton: false, className: styles.poiPopup }).setLngLat([poi.lng, poi.lat]).setDOMContent(content).addTo(map);
     return () => { popup.remove(); };
   }, [pois, selectedPoiId, ready]);
 
