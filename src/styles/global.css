@@ -24,7 +24,7 @@
   --shadow-raised: 0 6px 18px rgba(13, 40, 80, 0.1);
   --radius: 10px;
   --radius-sm: 8px;
-  --font: "Times New Roman", Times, "Liberation Serif", serif;
+  --font: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 }
 
 * {
