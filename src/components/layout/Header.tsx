@@ -30,7 +30,7 @@ export function Header() {
   const authMenuRef = useRef<HTMLDivElement>(null);
   const authToggleRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
-  const { ward, city, logoUrl } = useSiteIdentity();
+  const { ward, wardInSentence, logoUrl } = useSiteIdentity();
 
   // Dong menu dien thoai va menu dang nhap moi khi dieu huong.
   useEffect(() => {
@@ -101,9 +101,9 @@ export function Header() {
               <span className={styles.eyebrow}>
                 <span className={styles.eyebrowLong}>Ủy ban nhân dân</span>
                 <span className={styles.eyebrowShort}>UBND</span>
+                {" "}{wardInSentence}
               </span>
-              <span className={styles.name}>{ward}</span>
-              <span className={styles.sub}>Cổng thông tin điện tử · {city}</span>
+              <span className={styles.name}>Cổng thông tin điện tử</span>
             </span>
           </Link>
 

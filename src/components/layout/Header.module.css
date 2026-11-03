@@ -94,10 +94,6 @@
   line-height: 1.35;
 }
 
-.sub {
-  font-size: 13px;
-  color: #e6eef8;
-}
 
 .authActions {
   grid-column: 2;
@@ -298,9 +294,6 @@
     font-size: 17px;
   }
 
-  .sub {
-    display: none;
-  }
 
   .menuToggle {
     display: flex;
