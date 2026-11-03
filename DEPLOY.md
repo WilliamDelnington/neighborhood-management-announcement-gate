@@ -10,6 +10,24 @@ On the current VPS, publish the complete `dist/assets/` folder to
 Retain previous hashed assets so an already-open browser tab can still load its
 map chunk. Keep a copy of the previous index.html for rollback.
 
+## Deploying on the VPS
+
+`git pull` alone does not update the live site: nginx serves the built files in
+`/var/www/congthongtin-announcement-gate`, not the source checkout, and there is
+no pm2 process to restart. After pushing to `main`, run this on the VPS from the
+repo checkout:
+
+```bash
+bash scripts/deploy.sh
+```
+
+It refuses to run over local changes, then pulls `main` (fast-forward only),
+runs `npm ci` and `npm run build`, backs up the live `index.html` to
+`index.html.bak`, copies `dist/assets/` without deleting older hashed files, and
+replaces `index.html` last. Set `WEB_ROOT=/other/path` if nginx serves a
+different folder. To roll back, copy `index.html.bak` over `index.html`; the
+previous assets are still in place.
+
 The production API URL comes from `.env.production`. The API must include
 `GET /api/neighborhoods/public` (with geometry) and `GET /api/pois/public`.
 Deploy and health-check the backend before publishing a frontend that needs
