@@ -173,3 +173,4 @@
 .poiMarker:hover .markerBadge { box-shadow: 0 3px 10px #17212b99; }
 .poiPopup { z-index: 2; }
 .noPhone { display: block; padding: 8px 12px; }
+.option strong { font-family: var(--font-heading); }
