@@ -24,15 +24,39 @@ function Seal({ ward }: { ward: string }) {
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
   const [logoFailed, setLogoFailed] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const authMenuRef = useRef<HTMLDivElement>(null);
+  const authToggleRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
   const { ward, city, logoUrl } = useSiteIdentity();
 
-  // Dong menu dien thoai moi khi dieu huong.
+  // Dong menu dien thoai va menu dang nhap moi khi dieu huong.
   useEffect(() => {
     setOpen(false);
+    setAuthOpen(false);
   }, [location.key]);
+
+  // Menu dang nhap (man hinh hep): dong khi bam ra ngoai hoac nhan Escape.
+  useEffect(() => {
+    if (!authOpen) return;
+    const onPointerDown = (event: PointerEvent) => {
+      if (!authMenuRef.current?.contains(event.target as Node)) setAuthOpen(false);
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setAuthOpen(false);
+        authToggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [authOpen]);
 
   useEffect(() => {
     setLogoFailed(false);
@@ -95,6 +119,41 @@ export function Header() {
                 {option.label}
               </button>
             ))}
+          </div>
+
+          {/* Man hinh hep: gop hai nut dang nhap vao mot menu tha xuong. */}
+          <div ref={authMenuRef} className={styles.authMenu}>
+            <button
+              ref={authToggleRef}
+              type="button"
+              className={styles.loginButton}
+              aria-expanded={authOpen}
+              aria-controls="menu-dang-nhap"
+              onClick={() => setAuthOpen(prev => !prev)}
+            >
+              <Icon name="user" size={18} />
+              Đăng nhập
+              <Icon name="chevron" size={14} className={cn(styles.authChevron, authOpen && styles.authChevronOpen)} />
+            </button>
+            {authOpen && (
+              <ul id="menu-dang-nhap" className={styles.authDropdown} aria-label="Đăng nhập tài khoản">
+                {signInOptions.map(option => (
+                  <li key={option.label}>
+                    {option.href ? (
+                      <a className={styles.authItem} href={option.href}>
+                        <Icon name={option.icon} size={18} />
+                        {option.label}
+                      </a>
+                    ) : (
+                      <span className={cn(styles.authItem, styles.authItemDisabled)} title="Đăng nhập hiện chưa khả dụng">
+                        <Icon name={option.icon} size={18} />
+                        {option.label}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <button
