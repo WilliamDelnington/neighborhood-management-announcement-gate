@@ -1,6 +1,7 @@
 .hero {
   position: relative;
-  background-color: var(--hero);
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--line);
 }
 
 /* Anh rong het man hinh nhung bi gioi han chieu cao: cat bot tren/duoi thay vi chiem tron man hinh. */
@@ -26,14 +27,14 @@
 .title {
   font-size: 40px;
   line-height: 1.2;
-  color: #fff;
+  color: var(--primary);
   max-width: 22ch;
   text-wrap: balance;
 }
 
 .lead {
   font-size: 17px;
-  color: #e6eef8;
+  color: var(--ink-soft);
   max-width: 56ch;
 }
 

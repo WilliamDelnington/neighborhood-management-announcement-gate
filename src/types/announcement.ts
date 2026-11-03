@@ -30,12 +30,12 @@ export type Announcement = {
   updatedAt: string;
 };
 
-export type AnnouncementBadgeVariant = "khan" | "thuong" | "sukien";
+export type AnnouncementBadgeVariant = "thuong" | "sukien";
 
+// Thong bao uu tien (priority) chi duoc xep len dau, khong gan nhan do "Khẩn".
 export function getAnnouncementBadgeVariant(
-  announcement: Pick<Announcement, "priority" | "pinned">,
+  announcement: Pick<Announcement, "pinned">,
 ): AnnouncementBadgeVariant {
-  if (announcement.priority) return "khan";
   if (announcement.pinned) return "sukien";
   return "thuong";
 }

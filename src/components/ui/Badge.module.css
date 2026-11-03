@@ -10,11 +10,6 @@
   white-space: nowrap;
 }
 
-.khan {
-  background: var(--danger-tint);
-  color: var(--danger);
-}
-
 .thuong {
   background: var(--primary-tint);
   color: var(--primary);

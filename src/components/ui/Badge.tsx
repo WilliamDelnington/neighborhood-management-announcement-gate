@@ -1,10 +1,9 @@
 import { cn } from "@/utils/cn";
 import styles from "./Badge.module.css";
 
-export type BadgeVariant = "khan" | "thuong" | "sukien";
+export type BadgeVariant = "thuong" | "sukien";
 
 const BADGE_LABEL: Record<BadgeVariant, string> = {
-  khan: "Khẩn",
   thuong: "Thông thường",
   sukien: "Sự kiện",
 };
