@@ -63,8 +63,8 @@ export function WardMapSection({ className }: { className?: string }) {
     <section id="ban-do" className={cn(styles.card, className)} aria-labelledby="ban-do-title">
       <div className={styles.heading}>
         <div>
-          <h2 id="ban-do-title" className={styles.title}>Bản đồ Tổ dân phố & tiện ích</h2>
-          <p className={styles.description}>Tra cứu Tổ dân phố và các địa điểm phục vụ đời sống tại {ward}.</p>
+          <h2 id="ban-do-title" className={styles.title}>Bản đồ, liên hệ Tổ dân phố & tiện ích</h2>
+          <p className={styles.description}>Tra cứu, liên hệ Tổ dân phố và các địa điểm phục vụ đời sống tại {ward}. Số điện thoại hiển thị là số liên hệ chính thức của tổ, không phải số cá nhân.</p>
         </div>
         <Link to="/to-dan-pho" className={styles.more}>Xem danh bạ đầy đủ →</Link>
       </div>
@@ -103,7 +103,13 @@ export function WardMapSection({ className }: { className?: string }) {
             {data && <p className={styles.meta} role="status">{filtered.length} Tổ dân phố · {mappedCount} tổ có ranh giới trên bản đồ</p>}
             {data && !filtered.length && <EmptyState message={neighborhoods.length ? "Không tìm thấy Tổ dân phố phù hợp." : "Chưa có Tổ dân phố nào được công bố."} />}
             <ul className={styles.list} aria-label="Danh sách Tổ dân phố">
-              {filtered.map(item => <li key={item._id}><button type="button" className={cn(styles.option, item._id === selectedId && styles.selected)} aria-pressed={item._id === selectedId} onClick={() => selectNeighborhood(item._id)}><strong>{item.name}</strong><span>{item.address || "Chưa cập nhật địa chỉ trụ sở"}</span><span className={styles.boundaryStatus}>{neighborhoodGeometry(item) ? "Xem ranh giới trên bản đồ" : "Chưa công bố ranh giới"}</span></button></li>)}
+              {filtered.map(item => {
+                const phone = item.contactPhone.trim();
+                return <li key={item._id}>
+                  <button type="button" className={cn(styles.option, item._id === selectedId && styles.selected)} aria-pressed={item._id === selectedId} onClick={() => selectNeighborhood(item._id)}><strong>{item.name}</strong><span>Tổ trưởng: {item.leaderName || "Chưa cập nhật"}</span><span>{item.address || "Chưa cập nhật địa chỉ trụ sở"}</span><span className={styles.boundaryStatus}>{neighborhoodGeometry(item) ? "Xem ranh giới trên bản đồ" : "Chưa công bố ranh giới"}</span></button>
+                  {phone ? <a className={styles.callLink} href={telHref(phone)} aria-label={`Gọi ${item.name}: ${phone}`}>Gọi tổ: {phone}</a> : <span className={cn(styles.meta, styles.noPhone)}>Chưa công bố số liên hệ</span>}
+                </li>;
+              })}
             </ul>
           </>}
         </div>

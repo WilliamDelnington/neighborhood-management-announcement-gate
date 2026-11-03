@@ -124,7 +124,7 @@
 .reloadMap, .inlineButton { color: var(--primary); background: var(--surface); border: 1px solid var(--field-line); border-radius: 6px; padding: 8px 12px; cursor: pointer; min-height: 44px; }
 .reloadMap { display: block; margin-top: 8px; }
 
-.poiDirections {
+.poiDirections, .callLink {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -135,7 +135,7 @@
   text-decoration: none;
 }
 
-.poiDirections:hover { text-decoration: underline; }
+.poiDirections:hover, .callLink:hover { text-decoration: underline; }
 
 .poiCategoryChip { color: var(--poi-color); border-color: var(--poi-color); }
 .poiCategoryChip:hover { border-color: var(--poi-color); box-shadow: inset 0 0 0 1px var(--poi-color); }
@@ -172,3 +172,4 @@
 .poiMarker:focus-visible .markerBadge { outline: 3px solid var(--primary); outline-offset: 3px; }
 .poiMarker:hover .markerBadge { box-shadow: 0 3px 10px #17212b99; }
 .poiPopup { z-index: 2; }
+.noPhone { display: block; padding: 8px 12px; }
